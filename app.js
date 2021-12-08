@@ -1,9 +1,9 @@
-var http = require('http'); // #1: changes 'htt' to 'http'
+var http = require('http'); // #1: fixed typo 'htt' to 'http'
 
-var myname = function(){ // #2: changed 'functon' to 'function'
-    return "Here is my IP address"; // #3: changed console.log to return
+var myname = function(){ // #2: fixed typo 'functon' to 'function'
+    return "Here is my IP address"; // #3: changed console.log to return otherwise it will return undefined when called.
 }
-async function callHttpbi() { // #4: added async to function
+async function callHttpbin() { // #4: added async to function & #5: Corrected function name from 'callHttpbi' to 'callHttpbin'
     let promise = new Promise((resolve, reject) => {
         http.get(
             'http://httpbin.org/ip',
@@ -16,17 +16,17 @@ async function callHttpbi() { // #4: added async to function
                 response.on('end', function() {
                     var result = JSON.parse(str);
                     myips = result.origin;
-                    resolve(myips) // #5: Changed 'resolve()' to 'resolve(myips)'
+                    resolve(myips) // #6: Changed 'resolve()' to 'resolve(myips)'
                 });
             }
         );
     });
 
     let result = await promise;
-    return result; // #6: Added a return
+    return result; // #7: Added a return
 }
-async function executeAsyncTask() { // #7: Changed to async function
-    const valueA = await callHttpbi() // #8: Corrected function name from 'callHttpbin' to 'callHttpbi'
+async function executeAsyncTask() { // #8: Changed to async function
+    const valueA = await callHttpbin()
     const valueB = myname();
     console.log(valueB + " " + valueA)
 } // #9: Was missing a closing brace for the function
