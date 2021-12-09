@@ -15,7 +15,7 @@ async function callHttpbin() { // #4: added async to function & #5: Corrected fu
                 });
                 response.on('end', function() {
                     var result = JSON.parse(str);
-                    myips = result.origin;
+                    let myips = result.origin; // This didn't have a variable declaration so I added it, it worked without it but I added it in anyways.
                     resolve(myips) // #6: Changed 'resolve()' to 'resolve(myips)'
                 });
             }
